@@ -43,7 +43,7 @@ public class ExamDAO2 {
 //			stmt.setString(idx++, vo.getCharTest());
 //			stmt.setDouble(idx++, vo.getDoubleTest());
 //			stmt.setDate(idx++, new Date(vo.getDateTest().getTime())); //그냥 vo.getDateTest() 만 쓰면 에러가뜬다.
-//			stmt.setTimestamp(idx++, vo.getDateTimeTest());
+//			stmt.setTimestamp(idx++, vo.getDateTimeTest()); 마지막은 idx만 적어도 무관.
 			stmt.setString(1, vo.getVarcharTest());
 			stmt.setString(2, vo.getCharTest());
 			stmt.setDouble(3, vo.getDoubleTest());
@@ -53,7 +53,7 @@ public class ExamDAO2 {
 			int res = stmt.executeUpdate(); // <이것이 있어야 실행이 된다.
 			// 결과처리(Select문만 ResultSet 객체 리턴)
 		} catch (Exception e) {
-			// ClassNotFoundException -> Exception으로 수정
+			// ClassNotFoundException -> Exception(최상위)으로 수정
 			e.printStackTrace();
 		} finally {
 			try {

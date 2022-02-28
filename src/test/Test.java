@@ -17,10 +17,10 @@ public class Test {
 		ExamVO createVo = new ExamVO(0, "가변폭문자열", "고정폭문자열", 0.123, new Date(), new Timestamp(System.currentTimeMillis()));
 		//생성자를 이용해서 객체를 만들었다.
 		
-		System.out.println(createVo);
+		//System.out.println(createVo);
 		//dao.create(createVo);
 		
-		//num컬럼이 ?번인 데이터만 가지고 오기
+		//num컬럼이 4번인 데이터만 가지고 오기
 		ExamVO readVo = new ExamVO();
 		readVo.setNum(4);
 		
@@ -37,8 +37,8 @@ public class Test {
 		} catch(Exception e) {
 			
 		}
-		//num컬럼이 ?번인 데이터만 가지고 오기 끝
-		//num컬럼이 ?번인 데이터를 수정합시다.
+		//num컬럼이 4번인 데이터만 가지고 오기 끝
+		//num컬럼이 4번인 데이터를 수정합시다.
 		ExamVO updateVo = new ExamVO();
 		updateVo.setNum(4);
 		updateVo.setVarcharTest("바꿀값");
@@ -47,11 +47,11 @@ public class Test {
 		//num컬럼이 ?번인 데이터를 수정합시다. 끝.
 		
 		
-		//num컬럼이 ?번인 데이터를 삭제합시다.
+		//num컬럼이 3번인 데이터를 삭제합시다.
 		ExamVO deleteVo = new ExamVO();
 		deleteVo.setNum(3);
 		dao.delete(deleteVo);
-		//num컬럼이 ?번인 데이터를 삭제합시다. 끝.
+		//num컬럼이 3번인 데이터를 삭제합시다. 끝.
 		
 //		List<ExamVO> list = dao.read();
 //		list.iterator();
