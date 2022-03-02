@@ -7,7 +7,7 @@ import java.util.List;
 import domain.ExamVO;
 import util.DbUtil;
 
-public class ExamDAO extends DbUtil{
+public class ExamDAO extends DbUtil {
 
 	/**
 	 * C : create() 등록하는 메소드 public : 접근지정자 param : 등록될 값 return : 없음..
@@ -27,7 +27,9 @@ public class ExamDAO extends DbUtil{
 		//int idx = 1;
 
 		try {
-			conn = dbCoon();  // 한번에 드라이버로드와 DB연결 가능.
+			//conn = new DbUtil().getConn(); -> 상속 안받았을때 메소드를 호출하는 것. (has a 방식)
+			conn = getConn();
+			//상속받는걸로 하면 conn = getConn(); 으로 사용. 대소문자 구분 잘하기. (is a 방식)
 			// prepareStatement(SQL작성 실행)
 			stmt = conn.prepareStatement(sql.toString());
 			// prepareStatement로 리턴값을 받는다. 메소드를 객체로 만들어서 객체.메소드로 실행을 시킨다.
@@ -51,8 +53,10 @@ public class ExamDAO extends DbUtil{
 			// ClassNotFoundException -> Exception으로 수정
 			e.printStackTrace();
 		} finally {
-			//DbUtil.dbClose(conn, stmt, null); //null이 있어서 if를 안붙여두 된다.
-			dbClose(conn, stmt, null); //DbUtil을 상속 받았을때 쓴다.
+			dbClose(conn, stmt, null);
+			
+//			//DbUtil.dbClose(conn, stmt, null); //null이 있어서 if를 안붙여두 된다.
+//			dbClose(conn, stmt, null); //DbUtil을 상속 받았을때 쓴다.
 		}
 		// 닫기
 	}
@@ -73,7 +77,7 @@ public class ExamDAO extends DbUtil{
 		
 		// 코드 작성
 		try {
-			conn = dbCoon();
+			conn = getConn();
 			// prepareStatement(SQL작성 실행)
 			stmt = conn.prepareStatement(sql.toString());
 			rs = stmt.executeQuery(); // executeQuery가 ResultSet을 리턴해서 ResultSet으로 받음
@@ -121,7 +125,7 @@ public class ExamDAO extends DbUtil{
 		ResultSet rs = null;
 
 		try {
-			conn = dbCoon();
+			conn = getConn();
 			//preparedStatement(SQL문+실행)
 			stmt = conn.prepareStatement(sql.toString());
 			
@@ -142,6 +146,15 @@ public class ExamDAO extends DbUtil{
 			
 			e.printStackTrace();
 		} finally {
+			try {
+				if (rs != null) rs.close();
+				if (stmt != null) stmt.close();
+				if (conn != null) conn.close();
+
+			} catch (SQLException e) {
+
+				e.printStackTrace();
+			}
 			dbClose(conn, stmt, rs);
 //			try {
 //				if(rs != null) rs.close();
@@ -176,7 +189,7 @@ public class ExamDAO extends DbUtil{
 		
 		// 코드 작성
 		try {
-			conn = dbCoon();
+			conn = getConn();
 			// prepareStatement(SQL작성 실행)
 			stmt = conn.prepareStatement(sql.toString());
 			
@@ -190,6 +203,13 @@ public class ExamDAO extends DbUtil{
 			
 			e.printStackTrace();
 		} finally {
+			try {
+				if(stmt != null) stmt.close();
+				if(conn != null) conn.close();
+			} catch (SQLException e) {
+				
+				e.printStackTrace();
+			}
 			dbClose(conn, stmt, null);
 //			try {
 //				if(stmt != null) stmt.close();
@@ -218,7 +238,7 @@ public class ExamDAO extends DbUtil{
 		
 		// 코드 작성
 		try {
-			conn = dbCoon();
+			conn = getConn();
 			stmt = conn.prepareStatement(sql.toString());
 			
 			stmt.setInt(1, vo.getNum());
@@ -230,6 +250,13 @@ public class ExamDAO extends DbUtil{
 			
 			e.printStackTrace();
 		} finally {
+			try {
+				if(stmt != null) stmt.close();
+				if(conn != null) conn.close();
+			} catch (SQLException e) {
+				
+				e.printStackTrace();
+			}
 			dbClose(conn, stmt, null);
 //			try {
 //				if(stmt != null) stmt.close();
