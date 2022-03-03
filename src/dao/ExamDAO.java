@@ -146,16 +146,8 @@ public class ExamDAO extends DbUtil {
 			
 			e.printStackTrace();
 		} finally {
-			try {
-				if (rs != null) rs.close();
-				if (stmt != null) stmt.close();
-				if (conn != null) conn.close();
-
-			} catch (SQLException e) {
-
-				e.printStackTrace();
-			}
-			dbClose(conn, stmt, rs);
+			dbClose(conn, stmt, null);
+			
 //			try {
 //				if(rs != null) rs.close();
 //				if(stmt != null) stmt.close();
@@ -203,22 +195,8 @@ public class ExamDAO extends DbUtil {
 			
 			e.printStackTrace();
 		} finally {
-			try {
-				if(stmt != null) stmt.close();
-				if(conn != null) conn.close();
-			} catch (SQLException e) {
-				
-				e.printStackTrace();
-			}
+			
 			dbClose(conn, stmt, null);
-//			try {
-//				if(stmt != null) stmt.close();
-//				if(conn != null) conn.close();
-//			} catch (SQLException e) {
-//				
-//				e.printStackTrace();
-//			}
-
 		}
 		// 닫기
 	}
@@ -250,12 +228,7 @@ public class ExamDAO extends DbUtil {
 			
 			e.printStackTrace();
 		} finally {
-			try {
-				if(stmt != null) stmt.close();
-				if(conn != null) conn.close();
-			} catch (SQLException e) {
-				
-				e.printStackTrace();
+		
 			}
 			dbClose(conn, stmt, null);
 //			try {
@@ -268,4 +241,4 @@ public class ExamDAO extends DbUtil {
 		}
 		// 닫기
 	}
-}
+

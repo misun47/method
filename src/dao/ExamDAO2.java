@@ -68,8 +68,8 @@ public class ExamDAO2 {
 				e.printStackTrace();
 			}
 
-		}
-		// 닫기
+		}// 닫기
+		
 	}
 
 	/**
@@ -115,6 +115,7 @@ public class ExamDAO2 {
 		} catch (Exception e) {
 
 			e.printStackTrace();
+		
 		} finally {
 			try {
 				if (rs != null) rs.close();
@@ -125,9 +126,9 @@ public class ExamDAO2 {
 
 				e.printStackTrace();
 			}
-		}
+		}	// 닫기
 
-		// 닫기
+		
 		return list;
 	}
 	
@@ -167,6 +168,8 @@ public class ExamDAO2 {
 		} catch (Exception e) {
 			
 			e.printStackTrace();
+			
+			
 		} finally {
 			try {
 				if(rs != null) rs.close();
@@ -176,8 +179,7 @@ public class ExamDAO2 {
 				
 				e.printStackTrace();
 			}
-		}
-		//닫기
+		}//닫기
 		//코드작성끝
 		return examVo;
 	}
@@ -220,6 +222,8 @@ public class ExamDAO2 {
 		} catch (Exception e) {
 			
 			e.printStackTrace();
+			
+			
 		} finally {
 			try {
 				if(stmt != null) stmt.close();
@@ -229,8 +233,8 @@ public class ExamDAO2 {
 				e.printStackTrace();
 			}
 
-		}
-		// 닫기
+		}// 닫기
+		
 	}
 
 	/**
@@ -265,6 +269,8 @@ public class ExamDAO2 {
 		} catch (Exception e) {
 			
 			e.printStackTrace();
+			
+			
 		} finally {
 			try {
 				if(stmt != null) stmt.close();
@@ -273,7 +279,7 @@ public class ExamDAO2 {
 				
 				e.printStackTrace();
 			}
-		}
-		// 닫기
+		}// 닫기
+		
 	}
 }
